@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:id="@+id/grp1">
+        <item
+            android:id="@+id/item_change_password"
+            android:icon="@drawable/ic_exit"
+            android:title="تغییر رمز عبور"
+            app:showAsAction="never" />
+    </group>
+
+    <group android:id="@+id/grp2">
+        <item
+            android:id="@+id/item_exit"
+            android:icon="@drawable/ic_exit"
+            android:title="خروج از حساب کاربری"
+            app:showAsAction="never" />
+
+    </group>
+
+</menu>

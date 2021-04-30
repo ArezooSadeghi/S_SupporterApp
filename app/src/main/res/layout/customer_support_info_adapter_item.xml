@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txt_customer_support_ID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="@color/black"
+            android:textDirection="ltr"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/img_btn_more"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_more"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_reg_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/yekan"
+            android:textDirection="rtl"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/txt_customer_support_ID"
+            app:layout_constraintStart_toEndOf="@id/img_btn_more"
+            app:layout_constraintTop_toTopOf="@id/img_btn_more" />
+
+        <ImageView
+            android:id="@+id/img_question"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/com"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_btn_more" />
+
+        <TextView
+            android:id="@+id/txt_question"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/iranyekanwebbold"
+            android:lineSpacingMultiplier="1.2"
+            android:maxLines="3"
+            android:textColor="@color/black"
+            android:textDirection="rtl"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/img_question"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/img_question" />
+
+        <!-- <TextView
+             android:id="@+id/txt_customer_user_name"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="8dp"
+             android:layout_marginRight="8dp"
+             android:layout_marginBottom="8dp"
+             android:textColor="#696969"
+             android:textDirection="rtl"
+             android:textSize="10sp"
+             app:layout_constraintEnd_toStartOf="@id/txt_customer_support_ID"
+             app:layout_constraintStart_toEndOf="@id/txt_reg_time"
+             app:layout_constraintTop_toTopOf="parent" />-->
+
+        <ImageView
+            android:id="@+id/img_answer"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/receptionist"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_question" />
+
+        <TextView
+            android:id="@+id/txt_answer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/iranyekanwebregular"
+            android:gravity="start"
+            android:lineSpacingMultiplier="1.2"
+            android:maxLines="3"
+            android:textColor="#0000FF"
+            android:textDirection="rtl"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/img_answer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/img_answer" />
+
+        <!-- <TextView
+             android:id="@+id/txt_user_full_name"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="8dp"
+             android:layout_marginRight="8dp"
+             android:layout_marginBottom="8dp"
+             android:textColor="#696969"
+             android:textDirection="rtl"
+             android:textSize="10sp"
+             app:layout_constraintEnd_toStartOf="@id/img_answer"
+             app:layout_constraintTop_toTopOf="@id/txt_answer" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

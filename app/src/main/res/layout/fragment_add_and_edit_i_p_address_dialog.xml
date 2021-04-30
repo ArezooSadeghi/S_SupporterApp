@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".view.fragment.AddAndEditIPAddressDialogFragment">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="16dp"
+            android:hint="لطفا نام مرکز را وارد کنید"
+            app:boxStrokeColor="#696969"
+            app:hintTextColor="#696969">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_text_center_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:textDirection="rtl" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:hint="لطفا آدرس ip خود را وارد کنید"
+            app:boxStrokeColor="#696969"
+            app:hintTextColor="#696969">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_text_ip_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:textDirection="anyRtl" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:hint="لطفا port خود را وارد کنید"
+            app:boxStrokeColor="#696969"
+            app:hintTextColor="#696969">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_text_port"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:textDirection="anyRtl" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/yellow"
+            android:src="@drawable/ic_check" />
+
+    </LinearLayout>
+
+</layout>

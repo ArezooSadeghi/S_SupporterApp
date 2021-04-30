@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".view.fragment.RegisterProductFragment">
+
+            <TextView
+                android:id="@+id/txt_customer_name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/iranyekanwebregular"
+                android:text="نام مشتری:"
+                android:textColor="@color/black"
+                android:textDirection="rtl"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_customer_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="4dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/iranyekanwebregular"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textDirection="rtl"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/txt_customer_name_text"
+                app:layout_constraintEnd_toStartOf="@id/txt_customer_name_text"
+                app:layout_constraintTop_toTopOf="@id/txt_customer_name_text" />
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/spinner_products"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="16dp"
+                android:fontFamily="@font/iranyekanwebbold"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_customer_name_text"
+                app:ms_arrow_tint="@color/white"
+                app:ms_background_color="#1B2431"
+                app:ms_padding_right="16dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/field_one"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="توضیحات"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="#696969"
+                app:hintTextColor="#696969"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinner_products">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_text_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textCursorDrawable="@drawable/custom_cursor"
+                    android:textDirection="rtl" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/field_two"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="مبلغ فاکتور(به ریال)"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="#696969"
+                app:hintTextColor="#696969"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/field_one">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_text_invoice_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/yekan"
+                    android:inputType="number"
+                    android:textColor="@color/black"
+                    android:textCursorDrawable="@drawable/custom_cursor"
+                    android:textDirection="anyRtl" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/check_box_invoice_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text=""
+                android:textDirection="rtl"
+                app:layout_constraintEnd_toEndOf="@id/field_two"
+                app:layout_constraintTop_toBottomOf="@id/field_two" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="فاکتور تسویه شده است"
+                android:textColor="@color/black"
+                android:textDirection="rtl"
+                app:layout_constraintBottom_toBottomOf="@id/check_box_invoice_payment"
+                app:layout_constraintEnd_toStartOf="@id/check_box_invoice_payment"
+                app:layout_constraintTop_toTopOf="@id/check_box_invoice_payment" />
+
+            <CheckBox
+                android:id="@+id/check_box_finish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=""
+                android:textDirection="rtl"
+                app:layout_constraintEnd_toEndOf="@id/check_box_invoice_payment"
+                app:layout_constraintTop_toBottomOf="@id/check_box_invoice_payment" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="مراحل نصب به پایان رسیده است"
+                android:textColor="@color/black"
+                android:textDirection="rtl"
+                app:layout_constraintBottom_toBottomOf="@id/check_box_finish"
+                app:layout_constraintEnd_toStartOf="@id/check_box_finish"
+                app:layout_constraintTop_toTopOf="@id/check_box_finish" />
+
+            <Button
+                android:id="@+id/btn_date_expiration"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/yekan"
+                android:textColor="@color/black"
+                android:textDirection="rtl"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/check_box_finish" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_date_expiration">
+
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:backgroundTint="@color/dark_navy_blue"
+                    android:text="انصراف" />
+
+                <Button
+                    android:id="@+id/btn_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:backgroundTint="@color/dark_navy_blue"
+                    android:text="ضبط" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

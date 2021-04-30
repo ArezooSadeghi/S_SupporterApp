@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dark_navy_blue"
+        tools:context=".view.fragment.LoginFragment">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/iranyekanwebbold"
+            android:text="@string/login_title"
+            android:textColor="@color/yellow"
+            android:textDirection="rtl"
+            android:textSize="28sp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/custom_login_background">
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/iranyekanwebbold"
+                android:textColor="@color/white"
+                android:textDirection="rtl"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/outlinedTextField1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_more"
+                app:layout_constraintTop_toTopOf="parent"
+                app:ms_arrow_tint="@color/white"
+                app:ms_background_color="#1B2431"
+                app:ms_padding_right="16dp" />
+
+            <ImageButton
+                android:id="@+id/img_more"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="8dp"
+                android:background="#1B2431"
+                android:src="@drawable/ic_more"
+                app:layout_constraintBottom_toBottomOf="@id/spinner"
+                app:layout_constraintEnd_toStartOf="@id/spinner"
+                app:layout_constraintTop_toTopOf="@id/spinner"
+                app:tint="@color/white" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/outlinedTextField1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/user_name_hint"
+                android:textColorHint="@color/yellow"
+                app:boxStrokeColor="#696969"
+                app:hintTextColor="@color/yellow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinner">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_text_user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_person"
+                    android:drawableTint="@color/yellow"
+                    android:maxLines="1"
+                    android:textColor="@color/yellow"
+                    android:textCursorDrawable="@drawable/custom_cursor"
+                    android:textDirection="rtl" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/outlinedTextField2"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/password_hint"
+                android:textColorHint="@color/yellow"
+                app:boxStrokeColor="#696969"
+                app:hintTextColor="@color/yellow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/outlinedTextField1">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_text_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_lock"
+                    android:drawableTint="@color/yellow"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:textColor="@color/yellow"
+                    android:textCursorDrawable="@drawable/custom_cursor"
+                    android:textDirection="rtl" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/yellow"
+                android:gravity="center"
+                android:text="ورود"
+                android:textColor="@color/black"
+                android:textDirection="rtl"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/outlinedTextField2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RelativeLayout
+            android:id="@+id/loading_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.4"
+            android:background="#696969"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:indeterminate="true" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</layout>
