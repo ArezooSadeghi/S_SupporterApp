@@ -2,6 +2,7 @@ package com.example.sipsupporterapp.viewmodel;
 
 import android.app.Application;
 import android.graphics.Bitmap;
+import android.net.Uri;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -12,6 +13,7 @@ import com.example.sipsupporterapp.model.ServerData;
 import com.example.sipsupporterapp.repository.SipSupportRepository;
 
 import java.util.List;
+import java.util.Map;
 
 public class AttachmentViewModel extends AndroidViewModel {
     private SipSupportRepository mRepository;
@@ -56,6 +58,13 @@ public class AttachmentViewModel extends AndroidViewModel {
 
     private SingleLiveEvent<List<Bitmap>> bitmapListSingleLiveEvent = new SingleLiveEvent<>();
 
+    private SingleLiveEvent<Boolean> yesDelete = new SingleLiveEvent<>();
+
+    private SingleLiveEvent<AttachResult> deleteAttachResultSingleLiveEvent;
+    private SingleLiveEvent<String> errorDeleteAttachResultSingleLiveEvent;
+
+    private SingleLiveEvent<Map<Uri, String>> showFullScreenImage = new SingleLiveEvent<>();
+
     public AttachmentViewModel(@NonNull Application application) {
         super(application);
 
@@ -79,9 +88,11 @@ public class AttachmentViewModel extends AndroidViewModel {
         attachResultViaAttachIDSingleLiveEvent = mRepository.getAttachResultViaAttachIDSingleLiveEvent();
         errorAttachResultViaAttachIDSingleLiveEvent = mRepository.getErrorAttachResultViaAttachIDSingleLiveEvent();
 
+        deleteAttachResultSingleLiveEvent = mRepository.getDeleteAttachResultSingleLiveEvent();
+        errorDeleteAttachResultSingleLiveEvent = mRepository.getErrorDeleteAttachResultSingleLiveEvent();
     }
 
-    public SingleLiveEvent<Boolean> getRequestPermissionSingleLiveEvent() {
+    public SingleLiveEvent<Boolean> getRequestPermission() {
         return mRequestPermissionSingleLiveEvent;
     }
 
@@ -113,15 +124,15 @@ public class AttachmentViewModel extends AndroidViewModel {
         return mDangerousUserSingleLiveEvent;
     }
 
-    public SingleLiveEvent<Boolean> getIsAttachAgainSingleLiveEvent() {
+    public SingleLiveEvent<Boolean> getShowAttachAgainDialog() {
         return mIsAttachAgainSingleLiveEvent;
     }
 
-    public SingleLiveEvent<Boolean> getYesAgainSingleLiveEvent() {
+    public SingleLiveEvent<Boolean> getYesAgain() {
         return mYesAgainSingleLiveEvent;
     }
 
-    public SingleLiveEvent<Boolean> getNoAgainSingleLiveEvent() {
+    public SingleLiveEvent<Boolean> getNoAttachAgain() {
         return mNoAgainSingleLiveEvent;
     }
 
@@ -185,6 +196,22 @@ public class AttachmentViewModel extends AndroidViewModel {
         return bitmapListSingleLiveEvent;
     }
 
+    public SingleLiveEvent<Boolean> getYesDelete() {
+        return yesDelete;
+    }
+
+    public SingleLiveEvent<AttachResult> getDeleteAttachResultSingleLiveEvent() {
+        return deleteAttachResultSingleLiveEvent;
+    }
+
+    public SingleLiveEvent<String> getErrorDeleteAttachResultSingleLiveEvent() {
+        return errorDeleteAttachResultSingleLiveEvent;
+    }
+
+    public SingleLiveEvent<Map<Uri, String>> getShowFullScreenImage() {
+        return showFullScreenImage;
+    }
+
     public ServerData getServerData(String centerName) {
         return mRepository.getServerData(centerName);
     }
@@ -229,4 +256,11 @@ public class AttachmentViewModel extends AndroidViewModel {
         mRepository.fetchWithAttachID(userLoginKey, attachID, loadFileData);
     }
 
+    public void deleteAttach(String userLoginKey, int attachID) {
+        mRepository.deleteAttach(userLoginKey, attachID);
+    }
+
+    public void getSipSupportServiceDeleteAttach(String baseUrl) {
+        mRepository.getSipSupportServiceDeleteAttach(baseUrl);
+    }
 }

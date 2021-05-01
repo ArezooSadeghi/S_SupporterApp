@@ -8,15 +8,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layoutDirection="ltr">
 
         <TextView
             android:id="@+id/txt_product_Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="@font/iranyekanwebregular"
+            android:layout_marginRight="8dp"
+            android:fontFamily="@font/regular"
             android:textColor="@color/black"
             android:textDirection="rtl"
             app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +27,7 @@
             android:id="@+id/img_more"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:background="@color/white"
             android:src="@drawable/ic_more"
@@ -37,7 +38,7 @@
             android:id="@+id/txt_invoice_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:fontFamily="@font/yekan"
             android:textColor="@color/black"
             android:textDirection="rtl"
@@ -50,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:ellipsize="end"
             android:fontFamily="@font/iranyekanweblight"
             android:maxLines="2"
@@ -65,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:fontFamily="@font/iranyekanweblight"
             android:textColor="@color/black"
             android:textDirection="rtl"
@@ -73,25 +74,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_product_Name" />
 
-     <!--   <TextView
-            android:id="@+id/txt_add_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/yekan"
-            android:textColor="#696969"
-            android:textDirection="rtl"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@id/txt_product_Name"
-            app:layout_constraintStart_toEndOf="@id/img_more"
-            app:layout_constraintTop_toTopOf="@id/txt_product_Name" />-->
-
         <CheckBox
             android:id="@+id/check_box_finish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:clickable="false"
             android:text="پایان کار"
             android:textSize="12sp"
@@ -103,7 +91,7 @@
             android:id="@+id/check_box_invoice_payment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:clickable="false"
             android:text="تسویه فاکتور"
             android:textSize="12sp"

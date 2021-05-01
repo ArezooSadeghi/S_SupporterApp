@@ -2,6 +2,7 @@ package com.example.sipsupporterapp.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,17 +18,29 @@ import com.example.sipsupporterapp.databinding.AttachmentAdapterItemBinding;
 import com.example.sipsupporterapp.diffutils.BitmapDiffUtils;
 import com.example.sipsupporterapp.viewmodel.AttachmentViewModel;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AttachmentAdapter extends RecyclerView.Adapter<AttachmentAdapter.AttachmentHolder> {
     private Context context;
     private List<Bitmap> bitmaps;
     private AttachmentViewModel viewModel;
+    private Map<Bitmap, String> mapBitmap;
+    private Map<Uri, String> mapUri;
 
     public AttachmentAdapter(Context context, List<Bitmap> bitmaps, AttachmentViewModel viewModel) {
         this.context = context;
         this.bitmaps = bitmaps;
         this.viewModel = viewModel;
+    }
+
+    public void setMapBitmap(Map<Bitmap, String> mapBitmap) {
+        this.mapBitmap = mapBitmap;
+    }
+
+    public void setMapUri(Map<Uri, String> mapUri) {
+        this.mapUri = mapUri;
     }
 
     @NonNull
@@ -44,7 +57,17 @@ public class AttachmentAdapter extends RecyclerView.Adapter<AttachmentAdapter.At
         holder.binding.getRoot().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewModel.getAttachmentAdapterItemClickedSingleLiveEvent().setValue(bitmaps.get(position));
+                Bitmap bitmap = bitmaps.get(position);
+                String imageName = mapBitmap.get(bitmap);
+                Uri uri = null;
+                for (Map.Entry<Uri, String> entry : mapUri.entrySet()) {
+                    if (entry.getValue().equals(imageName)) {
+                        uri = entry.getKey();
+                    }
+                }
+                Map<Uri, String> mapUri = new HashMap<>();
+                mapUri.put(uri, imageName);
+                viewModel.getShowFullScreenImage().setValue(mapUri);
             }
         });
     }
@@ -71,7 +94,7 @@ public class AttachmentAdapter extends RecyclerView.Adapter<AttachmentAdapter.At
         }
 
         public void bindBitmap(Bitmap bitmap) {
-            Glide.with(context).asBitmap().load(bitmap).into(binding.imgAttachmentFile);
+            Glide.with(context).asBitmap().load(bitmap).into(binding.imgView);
         }
     }
 }

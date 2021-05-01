@@ -23,8 +23,11 @@ import com.example.sipsupporterapp.model.CustomerProducts;
 import com.example.sipsupporterapp.model.ServerData;
 import com.example.sipsupporterapp.utils.Converter;
 import com.example.sipsupporterapp.utils.SipSupportSharedPreferences;
-import com.example.sipsupporterapp.view.activity.ImageListContainerActivity;
+import com.example.sipsupporterapp.view.activity.ImageGalleyContainerActivity;
 import com.example.sipsupporterapp.view.activity.LoginContainerActivity;
+import com.example.sipsupporterapp.view.dialog.DeleteQuestionDialogFragment;
+import com.example.sipsupporterapp.view.dialog.ErrorDialogFragment;
+import com.example.sipsupporterapp.view.dialog.SuccessfulDeleteDialogFragment;
 import com.example.sipsupporterapp.viewmodel.RegisterProductViewModel;
 
 import java.util.ArrayList;
@@ -206,7 +209,7 @@ public class ProductsFragment extends Fragment {
                 .observe(getViewLifecycleOwner(), new Observer<CustomerProductResult>() {
                     @Override
                     public void onChanged(CustomerProductResult customerProductResult) {
-                        SuccessfulDeleteDialogFragment fragment = SuccessfulDeleteDialogFragment.newInstance();
+                        SuccessfulDeleteDialogFragment fragment = SuccessfulDeleteDialogFragment.newInstance("حذف محصول موفقیت آمیز بود");
                         fragment.show(getActivity().getSupportFragmentManager(), SuccessfulDeleteDialogFragment.TAG);
                     }
                 });
@@ -264,11 +267,14 @@ public class ProductsFragment extends Fragment {
                 .observe(getViewLifecycleOwner(), new Observer<CustomerProducts>() {
                     @Override
                     public void onChanged(CustomerProducts customerProducts) {
-                        Intent intent = ImageListContainerActivity.newIntent(
+                       /* Intent intent = ImageListContainerActivity.newIntent(
                                 getContext(),
                                 customerProducts.getCustomerID(),
                                 0,
                                 customerProducts.getCustomerProductID(), 0);
+                        startActivity(intent);*/
+
+                        Intent intent = ImageGalleyContainerActivity.newIntent(getContext(), customerProducts.getCustomerID(), 0, customerProducts.getCustomerProductID(), 0);
                         startActivity(intent);
                     }
                 });

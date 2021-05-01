@@ -26,8 +26,12 @@ import com.example.sipsupporterapp.model.PaymentResult;
 import com.example.sipsupporterapp.model.ServerData;
 import com.example.sipsupporterapp.utils.Converter;
 import com.example.sipsupporterapp.utils.SipSupportSharedPreferences;
-import com.example.sipsupporterapp.view.activity.ImageListContainerActivity;
+import com.example.sipsupporterapp.view.activity.ImageGalleyContainerActivity;
 import com.example.sipsupporterapp.view.activity.LoginContainerActivity;
+import com.example.sipsupporterapp.view.dialog.AddPaymentDialogFragment;
+import com.example.sipsupporterapp.view.dialog.DeletePaymentQuestionDialogFragment;
+import com.example.sipsupporterapp.view.dialog.ErrorDialogFragment;
+import com.example.sipsupporterapp.view.dialog.SuccessDeletePaymentDialogFragment;
 import com.example.sipsupporterapp.viewmodel.WithdrawViewModel;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
@@ -247,7 +251,9 @@ public class WithdrawFragment extends Fragment {
         viewModel.getSeeDocumentsClickedSingleLiveEvent().observe(getViewLifecycleOwner(), new Observer<PaymentInfo>() {
             @Override
             public void onChanged(PaymentInfo paymentInfo) {
-                Intent intent = ImageListContainerActivity.newIntent(getContext(), customerID, 0, 0, paymentInfo.getPaymentID());
+                /*Intent intent = ImageListContainerActivity.newIntent(getContext(), customerID, 0, 0, paymentInfo.getPaymentID());
+                startActivity(intent);*/
+                Intent intent = ImageGalleyContainerActivity.newIntent(getContext(), customerID, 0, 0, paymentInfo.getPaymentID());
                 startActivity(intent);
             }
         });

@@ -1,18 +1,10 @@
 package com.example.sipsupporterapp.view.fragment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,7 +19,6 @@ import com.example.sipsupporterapp.R;
 import com.example.sipsupporterapp.adapter.CustomerAdapter;
 import com.example.sipsupporterapp.databinding.FragmentCustomerBinding;
 import com.example.sipsupporterapp.model.CustomerInfo;
-import com.example.sipsupporterapp.model.CustomerParameter;
 import com.example.sipsupporterapp.model.CustomerResult;
 import com.example.sipsupporterapp.model.DateResult;
 import com.example.sipsupporterapp.model.ServerData;
@@ -35,10 +26,9 @@ import com.example.sipsupporterapp.utils.Converter;
 import com.example.sipsupporterapp.utils.SipSupportSharedPreferences;
 import com.example.sipsupporterapp.view.activity.ItemClickedContainerActivity;
 import com.example.sipsupporterapp.view.activity.LoginContainerActivity;
+import com.example.sipsupporterapp.view.dialog.ErrorDialogFragment;
+import com.example.sipsupporterapp.view.dialog.PopupDialogFragment;
 import com.example.sipsupporterapp.viewmodel.SharedCenterNameDialogAndCustomerViewModel;
-import com.skydoves.powermenu.OnMenuItemClickListener;
-import com.skydoves.powermenu.PowerMenu;
-import com.skydoves.powermenu.PowerMenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +76,7 @@ public class CustomerFragment extends Fragment {
 
 
         initViews();
-        setListener();
+        handleEvents();
 
         if (SipSupportSharedPreferences.getLastSearchQuery(getContext()) != null) {
             binding.progressBarLoading.setVisibility(View.VISIBLE);
@@ -114,6 +104,7 @@ public class CustomerFragment extends Fragment {
                 .observe(getViewLifecycleOwner(), new Observer<CustomerResult>() {
                     @Override
                     public void onChanged(CustomerResult customerResult) {
+                        binding.progressBarLoading.setVisibility(View.GONE);
 
                         StringBuilder stringBuilder = new StringBuilder();
                         String listSize = String.valueOf(customerResult.getCustomers().length);
@@ -213,81 +204,24 @@ public class CustomerFragment extends Fragment {
     }
 
 
-    private void setListener() {
-        binding.imgViewUser.setOnClickListener(new View.OnClickListener() {
+    private void handleEvents() {
+        binding.imgViewMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PowerMenu powerMenu = new PowerMenu.Builder(getContext())
-                        .addItem(new PowerMenuItem("تغییر رمز عبور"))
-                        .addItem(new PowerMenuItem("خروج از حساب کاربری"))
-                        .setTextColor(Color.parseColor("#000000"))
-                        .setTextGravity(Gravity.RIGHT)
-                        .build();
-
-                powerMenu.setOnMenuItemClickListener(new OnMenuItemClickListener<PowerMenuItem>() {
-                    @Override
-                    public void onItemClick(int position, PowerMenuItem item) {
-                        switch (position) {
-                            case 0:
-                                ChangePasswordDialogFragment changePasswordDialogFragment =
-                                        ChangePasswordDialogFragment.newInstance();
-                                changePasswordDialogFragment.show(
-                                        getActivity().getSupportFragmentManager(), ChangePasswordDialogFragment.TAG);
-                                powerMenu.dismiss();
-                                return;
-                            case 1:
-                                SipSupportSharedPreferences.setUserLoginKey(getContext(), null);
-                                SipSupportSharedPreferences.setUserFullName(getContext(), null);
-                                SipSupportSharedPreferences.setCustomerUserId(getContext(), 0);
-                                SipSupportSharedPreferences.setCustomerName(getContext(), null);
-                                SipSupportSharedPreferences.setCustomerTel(getContext(), null);
-                                SipSupportSharedPreferences.setLastSearchQuery(getContext(), null);
-                                Intent intent = LoginContainerActivity.newIntent(getContext());
-                                startActivity(intent);
-                                getActivity().finish();
-                                powerMenu.dismiss();
-                                return;
-                        }
-                    }
-                });
-                powerMenu.showAsDropDown(view);
+                PopupDialogFragment fragment = PopupDialogFragment.newInstance();
+                fragment.show(getParentFragmentManager(), PopupDialogFragment.TAG);
             }
         });
 
-        int searchPlateId = binding.searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
-        EditText searchPlate = (EditText) binding.searchView.findViewById(searchPlateId);
-        searchPlate.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        binding.btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(searchPlate.getWindowToken(),
-                            InputMethodManager.RESULT_UNCHANGED_SHOWN);
-                    if (v.getText().toString().isEmpty()) {
-                        int customerID = 0;
-                        SipSupportSharedPreferences.setLastSearchQuery(getContext(), "");
-                        CustomerParameter customerParameter = new CustomerParameter(
-                                customerID, "");
-                        binding.progressBarLoading.setVisibility(View.VISIBLE);
-
-                        ServerData serverData = viewModel.getServerData(SipSupportSharedPreferences.getLastValueSpinner(getContext()));
-                        viewModel.getSupportServicePostCustomerParameter(serverData.getIpAddress() + ":" + serverData.getPort());
-                        viewModel.fetchCustomerResult(SipSupportSharedPreferences.getUserLoginKey(getContext()), "");
-                    } else {
-                        int customerID = 0;
-                        SipSupportSharedPreferences.setLastSearchQuery(getContext(), v.getText().toString());
-                        CustomerParameter customerParameter = new CustomerParameter(
-                                customerID, v.getText().toString());
-
-                        binding.progressBarLoading.setVisibility(View.VISIBLE);
-
-                        ServerData serverData = viewModel.getServerData(SipSupportSharedPreferences.getLastValueSpinner(getContext()));
-                        viewModel.getSupportServicePostCustomerParameter(serverData.getIpAddress() + ":" + serverData.getPort());
-                        viewModel.fetchCustomerResult(SipSupportSharedPreferences.getUserLoginKey(getContext()), v.getText().toString());
-                    }
-                }
-                return false;
+            public void onClick(View v) {
+                binding.progressBarLoading.setVisibility(View.VISIBLE);
+                String centerName = SipSupportSharedPreferences.getLastValueSpinner(getContext());
+                String userLoginKey = SipSupportSharedPreferences.getUserLoginKey(getContext());
+                ServerData serverData = viewModel.getServerData(centerName);
+                viewModel.getSupportServicePostCustomerParameter(serverData.getIpAddress() + ":" + serverData.getPort());
+                viewModel.fetchCustomerResult(userLoginKey, binding.edTextSearch.getText().toString());
             }
         });
     }

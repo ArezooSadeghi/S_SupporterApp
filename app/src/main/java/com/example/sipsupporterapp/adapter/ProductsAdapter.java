@@ -26,12 +26,12 @@ import java.util.List;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductsHolder> {
     private Context context;
-    private List<CustomerProducts> customerProducts;
+    private List<CustomerProducts> customerProductsList;
     private RegisterProductViewModel viewModel;
 
-    public ProductsAdapter(Context context, List<CustomerProducts> customerProducts, RegisterProductViewModel viewModel) {
+    public ProductsAdapter(Context context, List<CustomerProducts> customerProductsList, RegisterProductViewModel viewModel) {
         this.context = context;
-        this.customerProducts = customerProducts;
+        this.customerProductsList = customerProductsList;
         this.viewModel = viewModel;
     }
 
@@ -47,9 +47,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
     @Override
     public void onBindViewHolder(@NonNull ProductsHolder holder, int position) {
-        holder.bindCustomerProducts(customerProducts.get(position));
+        CustomerProducts customerProducts = customerProductsList.get(position);
+        holder.bindCustomerProducts(customerProducts);
 
-        int customerProductID = customerProducts.get(position).getCustomerProductID();
+        int customerProductID = customerProducts.getCustomerProductID();
 
         holder.binding.imgMore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,17 +68,17 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
                     public void onItemClick(int position, PowerMenuItem item) {
                         switch (position) {
                             case 0:
-                                viewModel.getEditClickedSingleLiveEvent().setValue(customerProducts.get(position));
+                                viewModel.getEditClickedSingleLiveEvent().setValue(customerProducts);
                                 powerMenu.dismiss();
-                                return;
+                                break;
                             case 1:
                                 viewModel.getDeleteClickedSingleLiveEvent().setValue(customerProductID);
                                 powerMenu.dismiss();
-                                return;
+                                break;
                             case 2:
-                                viewModel.getProductAdapterSeeDocumentsClickedSingleLiveEvent().setValue(customerProducts.get(position));
+                                viewModel.getProductAdapterSeeDocumentsClickedSingleLiveEvent().setValue(customerProducts);
                                 powerMenu.dismiss();
-                                return;
+                                break;
                         }
                     }
                 });
@@ -88,7 +89,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
     @Override
     public int getItemCount() {
-        return customerProducts == null ? 0 : customerProducts.size();
+        return customerProductsList == null ? 0 : customerProductsList.size();
     }
 
     public class ProductsHolder extends RecyclerView.ViewHolder {

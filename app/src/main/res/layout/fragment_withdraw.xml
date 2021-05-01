@@ -16,7 +16,7 @@
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/yellow">
+            android:background="#FFEA00">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -32,7 +32,7 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="4dp"
                     android:ellipsize="end"
-                    android:fontFamily="@font/iranyekanwebregular"
+                    android:fontFamily="@font/regular"
                     android:lineSpacingMultiplier="1"
                     android:maxLines="1"
                     android:textColor="@color/black"
@@ -64,11 +64,11 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/iranyekanwebbold"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textDirection="rtl"
             android:textSize="16sp"
-            app:ms_arrow_tint="@color/white"
-            app:ms_background_color="#1B2431"
+            app:ms_arrow_tint="@color/black"
+            app:ms_background_color="#838996"
             app:ms_padding_right="16dp" />
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -77,8 +77,8 @@
 
             <ProgressBar
                 android:id="@+id/progress_bar_loading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -94,13 +94,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:backgroundTint="@color/yellow" />
+                android:backgroundTint="#FFEA00" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_add_new_with_draw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="#FFFDD0"
                 android:src="@drawable/ic_add"
                 app:layout_anchor="@id/bottomAppBar" />
 

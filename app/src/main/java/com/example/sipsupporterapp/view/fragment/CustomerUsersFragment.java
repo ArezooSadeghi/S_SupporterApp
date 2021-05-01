@@ -25,6 +25,8 @@ import com.example.sipsupporterapp.model.ServerData;
 import com.example.sipsupporterapp.utils.SipSupportSharedPreferences;
 import com.example.sipsupporterapp.view.activity.CustomerContainerActivity;
 import com.example.sipsupporterapp.view.activity.LoginContainerActivity;
+import com.example.sipsupporterapp.view.dialog.ErrorDialogFragment;
+import com.example.sipsupporterapp.view.dialog.RegisterSupportDialogFragment;
 import com.example.sipsupporterapp.viewmodel.CustomerUsersViewModel;
 
 import java.util.ArrayList;

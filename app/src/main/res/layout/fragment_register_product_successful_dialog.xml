@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".view.fragment.RegisterProductSuccessfulDialogFragment">
+        tools:context=".view.dialog.RegisterProductSuccessfulDialogFragment">
 
         <ImageView
             android:id="@+id/img_close_window"
@@ -38,7 +38,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/iranyekanwebregular"
+            android:fontFamily="@font/regular"
             android:text="ثبت محصول موفقیت آمیز بود"
             android:textColor="@color/black"
             android:textDirection="rtl"

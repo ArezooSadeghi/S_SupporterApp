@@ -46,6 +46,7 @@ public class CustomerSupportInfoAdapter extends RecyclerView.Adapter<CustomerSup
 
     @Override
     public void onBindViewHolder(@NonNull CustomerSupportInfoHolder holder, int position) {
+        CustomerSupportInfo customerSupportInfo = customerSupportInfoList.get(position);
         holder.bindCustomerSupportInfo(customerSupportInfoList.get(position));
 
         holder.binding.imgBtnMore.setOnClickListener(new View.OnClickListener() {
@@ -62,9 +63,9 @@ public class CustomerSupportInfoAdapter extends RecyclerView.Adapter<CustomerSup
                     public void onItemClick(int position, PowerMenuItem item) {
                         switch (position) {
                             case 0:
-                                viewModel.getCustomerSupportInfoAdapterSeeDocumentClickedSingleLiveEvent().setValue(customerSupportInfoList.get(position));
+                                viewModel.getCustomerSupportInfoAdapterSeeDocumentClickedSingleLiveEvent().setValue(customerSupportInfo);
                                 powerMenu.dismiss();
-                                return;
+                                break;
                         }
                     }
                 });
@@ -91,6 +92,8 @@ public class CustomerSupportInfoAdapter extends RecyclerView.Adapter<CustomerSup
             binding.txtQuestion.setText(question);
             String answer = Converter.convert(customerSupportInfo.getAnswer());
             binding.txtAnswer.setText(answer);
+            String userFullName = Converter.convert(customerSupportInfo.getUserFullName());
+            binding.txtUserFullName.setText(userFullName + " :");
 
             String customerSupportID = String.valueOf(customerSupportInfo.getCustomerSupportID());
             binding.txtCustomerSupportID.setText(customerSupportID);

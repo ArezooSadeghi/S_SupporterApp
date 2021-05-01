@@ -127,4 +127,7 @@ public interface SipSupportService {
 
     @POST(".")
     Call<PaymentResult> paymentsAdd(@Header("userLoginKey") String userLoginKey, @Body PaymentInfo paymentInfo);
+
+    @DELETE(".")
+    Call<AttachResult> deleteAttach(@Header("userLoginKey") String userLoginKey, @Query("attachID") int attachID);
 }

@@ -17,10 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SipSupporterApp"
         android:usesCleartextTraffic="true">
+        <activity android:name=".view.activity.FullScreenImageContainerActivity"></activity>
+        <activity android:name=".view.activity.ImageGalleyContainerActivity" />
         <activity
             android:name=".view.activity.WithdrawContainerActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.ImageListContainerActivity"
             android:screenOrientation="portrait" />

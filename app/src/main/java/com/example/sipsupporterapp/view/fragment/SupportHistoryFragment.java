@@ -2,7 +2,6 @@ package com.example.sipsupporterapp.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +23,9 @@ import com.example.sipsupporterapp.model.CustomerSupportResult;
 import com.example.sipsupporterapp.model.ServerData;
 import com.example.sipsupporterapp.utils.Converter;
 import com.example.sipsupporterapp.utils.SipSupportSharedPreferences;
-import com.example.sipsupporterapp.view.activity.ImageListContainerActivity;
+import com.example.sipsupporterapp.view.activity.ImageGalleyContainerActivity;
 import com.example.sipsupporterapp.view.activity.LoginContainerActivity;
+import com.example.sipsupporterapp.view.dialog.ErrorDialogFragment;
 import com.example.sipsupporterapp.viewmodel.SupportHistoryViewModel;
 
 import java.util.ArrayList;
@@ -169,15 +169,15 @@ public class SupportHistoryFragment extends Fragment {
                 .observe(getViewLifecycleOwner(), new Observer<CustomerSupportInfo>() {
                     @Override
                     public void onChanged(CustomerSupportInfo customerSupportInfo) {
-                        Intent intent = ImageListContainerActivity.newIntent(
+                       /* Intent intent = ImageListContainerActivity.newIntent(
                                 getContext(),
                                 customerSupportInfo.getCustomerID(),
                                 customerSupportInfo.getCustomerSupportID(),
                                 0,
                                 0);
 
-                        Log.d("Arezoo", customerSupportInfo.getCustomerSupportID() + "");
-
+                        startActivity(intent);*/
+                        Intent intent = ImageGalleyContainerActivity.newIntent(getContext(), customerSupportInfo.getCustomerID(), customerSupportInfo.getCustomerSupportID(), 0, 0);
                         startActivity(intent);
                     }
                 });
@@ -189,6 +189,7 @@ public class SupportHistoryFragment extends Fragment {
         for (CustomerSupportInfo customerSupportInfo : customerSupportInfoArray) {
             customerSupportInfoList.add(customerSupportInfo);
         }
+
         CustomerSupportInfoAdapter adapter = new CustomerSupportInfoAdapter(
                 getContext(), customerSupportInfoList, viewModel);
         binding.recyclerViewSupportHistory.setAdapter(adapter);

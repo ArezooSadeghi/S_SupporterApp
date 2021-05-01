@@ -25,6 +25,10 @@ import com.example.sipsupporterapp.utils.Converter;
 import com.example.sipsupporterapp.utils.SipSupportSharedPreferences;
 import com.example.sipsupporterapp.view.activity.ImageListContainerActivity;
 import com.example.sipsupporterapp.view.activity.LoginContainerActivity;
+import com.example.sipsupporterapp.view.dialog.AddEditCustomerPaymentDialogFragment;
+import com.example.sipsupporterapp.view.dialog.DeleteQuestionCustomerPaymentsDialogFragment;
+import com.example.sipsupporterapp.view.dialog.ErrorDialogFragment;
+import com.example.sipsupporterapp.view.dialog.SuccessfulDeleteCustomerPaymentDialogFragment;
 import com.example.sipsupporterapp.viewmodel.DepositAmountsViewModel;
 
 import java.util.ArrayList;
@@ -203,7 +207,7 @@ public class DepositAmountsFragment extends Fragment {
         viewModel.getDeleteCustomerPaymentsSingleLiveEvent().observe(getViewLifecycleOwner(), new Observer<CustomerPaymentResult>() {
             @Override
             public void onChanged(CustomerPaymentResult customerPaymentResult) {
-                SuccessfulDeleteCustomerPaymentDialogFragment fragment = SuccessfulDeleteCustomerPaymentDialogFragment.newInstance();
+                SuccessfulDeleteCustomerPaymentDialogFragment fragment = SuccessfulDeleteCustomerPaymentDialogFragment.newInstance("برداشتی با موفقیت ثبت شد");
                 fragment.show(getParentFragmentManager(), SuccessfulDeleteCustomerPaymentDialogFragment.TAG);
             }
         });

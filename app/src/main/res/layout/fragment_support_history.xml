@@ -16,7 +16,7 @@
             android:id="@+id/tool_bar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/yellow">
+            android:background="#FFEA00">
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
                     android:ellipsize="end"
-                    android:fontFamily="@font/iranyekanwebregular"
+                    android:fontFamily="@font/regular"
                     android:maxLines="1"
                     android:textColor="@color/black"
                     android:textDirection="rtl"
@@ -60,8 +60,8 @@
 
         <ProgressBar
             android:id="@+id/progress_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginTop="250dp" />
 

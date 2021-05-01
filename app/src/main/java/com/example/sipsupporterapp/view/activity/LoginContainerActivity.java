@@ -19,10 +19,8 @@ public class LoginContainerActivity extends SingleFragmentActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-
-        if (SipSupportSharedPreferences.getUserLoginKey(this) == null) {
-            super.onCreate(savedInstanceState);
-        } else {
+        super.onCreate(savedInstanceState);
+        if (SipSupportSharedPreferences.getUserLoginKey(this) != null) {
             Intent intent = CustomerContainerActivity.newIntent(this);
             startActivity(intent);
             finish();

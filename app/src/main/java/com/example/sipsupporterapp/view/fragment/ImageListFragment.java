@@ -25,12 +25,18 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.example.sipsupporterapp.R;
 import com.example.sipsupporterapp.adapter.AttachmentAdapter;
 import com.example.sipsupporterapp.databinding.FragmentImageListBinding;
+import com.example.sipsupporterapp.eventbus.UpdateEvent;
 import com.example.sipsupporterapp.model.AttachInfo;
 import com.example.sipsupporterapp.model.AttachResult;
 import com.example.sipsupporterapp.model.ServerData;
 import com.example.sipsupporterapp.utils.SipSupportSharedPreferences;
 import com.example.sipsupporterapp.view.activity.LoginContainerActivity;
+import com.example.sipsupporterapp.view.dialog.AttachmentDialogFragment;
+import com.example.sipsupporterapp.view.dialog.ErrorDialogFragment;
+import com.example.sipsupporterapp.view.dialog.FullScreenImageDialogFragment;
 import com.example.sipsupporterapp.viewmodel.AttachmentViewModel;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -179,7 +185,7 @@ public class ImageListFragment extends Fragment {
     }
 
     private void setObserver() {
-        mViewModel.getRequestPermissionSingleLiveEvent().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+        mViewModel.getRequestPermission().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean isRequestPermission) {
                 requestPermissions(new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_CAMERA_PERMISSION);

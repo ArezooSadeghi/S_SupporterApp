@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".view.fragment.ErrorDialogFragment">
+        tools:context=".view.dialog.ErrorDialogFragment">
 
         <ImageView
             android:id="@+id/img_close_window"
@@ -48,7 +48,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/iranyekanwebregular"
+            android:fontFamily="@font/regular"
             android:lineSpacingMultiplier="1.2"
             android:maxLines="3"
             android:textColor="@color/black"
@@ -63,7 +63,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/black"
-            android:fontFamily="@font/iranyekanwebregular"
+            android:fontFamily="@font/regular"
             android:text="بستن"
             android:textColor="@color/white"
             android:textDirection="rtl" />

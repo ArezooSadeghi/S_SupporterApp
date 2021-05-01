@@ -10,9 +10,16 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/img_attachment_file"
-            android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:id="@+id/img_view"
+            android:layout_width="110dp"
+            android:layout_height="180dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/custom_image_view_bg"
+            android:padding="8dp"
+            android:scaleType="fitCenter" />
 
     </FrameLayout>
 

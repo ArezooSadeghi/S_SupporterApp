@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".view.fragment.ShowInformationCallDialogFragment">
+        tools:context=".view.dialog.ShowInformationCallDialogFragment">
 
         <ImageView
             android:id="@+id/img_close"
@@ -38,7 +38,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/iranyekanwebregular"
+            android:fontFamily="@font/regular"
             android:textColor="@color/black"
             android:textDirection="rtl"
             android:textSize="18sp" />

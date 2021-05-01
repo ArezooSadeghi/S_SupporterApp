@@ -25,6 +25,9 @@ import com.example.sipsupporterapp.model.UserResult;
 import com.example.sipsupporterapp.utils.SipSupportSharedPreferences;
 import com.example.sipsupporterapp.view.activity.CustomerContainerActivity;
 import com.example.sipsupporterapp.view.activity.LoginContainerActivity;
+import com.example.sipsupporterapp.view.dialog.EnterIPAddressDialogFragment;
+import com.example.sipsupporterapp.view.dialog.ErrorDialogFragment;
+import com.example.sipsupporterapp.view.dialog.IPAddressListDialogFragment;
 import com.example.sipsupporterapp.viewmodel.SharedLoginAndAddAndEditIPAddressDialogAndIPAddressListDialogViewModel;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
@@ -252,21 +255,26 @@ public class LoginFragment extends Fragment {
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                binding.edTextPassword.setEnabled(false);
-                binding.edTextUserName.setEnabled(false);
-                binding.btnLogin.setEnabled(false);
+                if (viewModel.getServerDataList() != null & viewModel.getServerDataList().size() == 0) {
+                    EnterIPAddressDialogFragment fragment = EnterIPAddressDialogFragment.newInstance();
+                    fragment.show(getParentFragmentManager(), EnterIPAddressDialogFragment.TAG);
+                } else {
+                    binding.edTextPassword.setEnabled(false);
+                    binding.edTextUserName.setEnabled(false);
+                    binding.btnLogin.setEnabled(false);
 
-                String userName = binding.edTextUserName.getText().toString();
-                String password = binding.edTextPassword.getText().toString();
+                    String userName = binding.edTextUserName.getText().toString();
+                    String password = binding.edTextPassword.getText().toString();
 
-                UserLoginParameter userLoginParameter = new UserLoginParameter(userName, password);
+                    UserLoginParameter userLoginParameter = new UserLoginParameter(userName, password);
 
-                if (spinnerValue != null) {
-                    ServerData serverData = viewModel.getServerData(spinnerValue);
-                    viewModel.getSipSupportServicePostUserLoginParameter(
-                            serverData.getIpAddress() + ":" + serverData.getPort());
-                    viewModel.fetchUserResult(userLoginParameter);
-                    binding.loadingLayout.setVisibility(View.VISIBLE);
+                    if (spinnerValue != null) {
+                        ServerData serverData = viewModel.getServerData(spinnerValue);
+                        viewModel.getSipSupportServicePostUserLoginParameter(
+                                serverData.getIpAddress() + ":" + serverData.getPort());
+                        viewModel.fetchUserResult(userLoginParameter);
+                        binding.loadingLayout.setVisibility(View.VISIBLE);
+                    }
                 }
             }
         });

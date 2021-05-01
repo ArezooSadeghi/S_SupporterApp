@@ -9,13 +9,13 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/dark_navy_blue">
+        android:background="#FFFDD0">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tool_bar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/yellow">
+            android:background="#FFEA00">
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -29,7 +29,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
                     android:ellipsize="end"
-                    android:fontFamily="@font/iranyekanwebregular"
+                    android:fontFamily="@font/regular"
                     android:maxLines="1"
                     android:textColor="@color/black"
                     android:textDirection="rtl"
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/yellow"
+                android:backgroundTint="#FFEA00"
                 android:gravity="center"
                 android:text="ثبت پشتیبانی"
                 android:textDirection="rtl" />
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/yellow"
+                android:backgroundTint="#FFEA00"
                 android:gravity="center"
                 android:text="سابقه پشتیبانی"
                 android:textDirection="rtl" />
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/yellow"
+                android:backgroundTint="#FFEA00"
                 android:gravity="center"
                 android:text="لیست محصولات"
                 android:textDirection="rtl" />
@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/yellow"
+                android:backgroundTint="#FFEA00"
                 android:gravity="center"
                 android:text="مبالغ واریزی"
                 android:textDirection="rtl" />
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/yellow"
+                android:backgroundTint="#FFEA00"
                 android:gravity="center"
                 android:text="مشاهده اطلاعات تماس"
                 android:textDirection="rtl" />
@@ -120,7 +120,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/yellow"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="#FFEA00"
                 android:gravity="center"
                 android:text="برداشت ها"
                 android:textDirection="rtl" />

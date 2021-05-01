@@ -75,7 +75,8 @@ public class SipSupportRepository {
             sipSupportServiceAttach, sipSupportServiceCustomerPaymentResult, sipSupportServiceGetAttachmentFilesViaCustomerPaymentID, sipSupportServiceGetAttachmentFileViaAttachID,
             sipSupporterServiceAddCustomerPayments, sipSupporterServiceDeleteCustomerPayments, sipSupporterServiceEditCustomerPayments, sipSupporterServiceGetBankAccountResult,
             sipSupportServiceGetAttachmentFilesViaCustomerProductID, sipSupportServiceGetAttachmentFilesViaCustomerSupportID, sipSupportServicePaymentsListAllBankAccount,
-            sipSupportServicePaymentsListByBankAccount, sipSupportServicePaymentsEdit, sipSupportServicePaymentsDelete, sipSupportServicePaymentSubjectsList, sipSupportServicePaymentsAdd;
+            sipSupportServicePaymentsListByBankAccount, sipSupportServicePaymentsEdit, sipSupportServicePaymentsDelete, sipSupportServicePaymentSubjectsList, sipSupportServicePaymentsAdd,
+            SipSupporterServiceDeleteAttach;
     private static final String TAG = SipSupportRepository.class.getSimpleName();
 
     private SingleLiveEvent<CustomerResult> customerResultSingleLiveEvent = new SingleLiveEvent<>();
@@ -172,6 +173,9 @@ public class SipSupportRepository {
 
     private SingleLiveEvent<PaymentSubjectResult> paymentSubjectResultPaymentSubjectsListSingleLiveEvent = new SingleLiveEvent<>();
     private SingleLiveEvent<String> errorPaymentSubjectResultPaymentSubjectsListSingleLiveEvent = new SingleLiveEvent<>();
+
+    private SingleLiveEvent<AttachResult> deleteAttachResultSingleLiveEvent = new SingleLiveEvent<>();
+    private SingleLiveEvent<String> errorDeleteAttachResultSingleLiveEvent = new SingleLiveEvent<>();
 
     private SipSupportRepository(Context context) {
         this.context = context.getApplicationContext();
@@ -364,8 +368,8 @@ public class SipSupportRepository {
     public void getSipSupportServicePaymentsListAllBankAccount(String baseUrl) {
         RetrofitInstance.getNewBaseUrl(baseUrl);
         sipSupportServicePaymentsListAllBankAccount = RetrofitInstance
-                .paymentsListAllBankAccountRetrofitInstance(new TypeToken<PaymentResult>() {
-                }.getType(), new PaymentResultDeserializer(), context).create(SipSupportService.class);
+                .deleteAttachRetrofitInstance(new TypeToken<AttachResult>() {
+                }.getType(), new AttachResultDeserializer(), context).create(SipSupportService.class);
     }
 
     public void getSipSupportServicePaymentsListByBankAccount(String baseUrl) {
@@ -401,6 +405,13 @@ public class SipSupportRepository {
         sipSupportServicePaymentSubjectsList = RetrofitInstance
                 .paymentSubjectsListRetrofitInstance(new TypeToken<PaymentSubjectResult>() {
                 }.getType(), new PaymentSubjectResultDeserializer(), context).create(SipSupportService.class);
+    }
+
+    public void getSipSupportServiceDeleteAttach(String baseUrl) {
+        RetrofitInstance.getNewBaseUrl(baseUrl);
+        SipSupporterServiceDeleteAttach = RetrofitInstance
+                .deleteAttachRetrofitInstance(new TypeToken<AttachResult>() {
+                }.getType(), new AttachResultDeserializer(), context).create(SipSupportService.class);
     }
 
     public SingleLiveEvent<CustomerResult> getCustomerResultSingleLiveEvent() {
@@ -689,6 +700,14 @@ public class SipSupportRepository {
 
     public SingleLiveEvent<String> getErrorPaymentResultPaymentsAddSingleLiveEvent() {
         return errorPaymentResultPaymentsAddSingleLiveEvent;
+    }
+
+    public SingleLiveEvent<AttachResult> getDeleteAttachResultSingleLiveEvent() {
+        return deleteAttachResultSingleLiveEvent;
+    }
+
+    public SingleLiveEvent<String> getErrorDeleteAttachResultSingleLiveEvent() {
+        return errorDeleteAttachResultSingleLiveEvent;
     }
 
     public void insertServerData(ServerData serverData) {
@@ -2064,6 +2083,46 @@ public class SipSupportRepository {
 
             @Override
             public void onFailure(Call<PaymentResult> call, Throwable t) {
+                if (t instanceof NoConnectivityException) {
+                    noConnection.setValue(t.getMessage());
+                } else if (t instanceof SocketTimeoutException) {
+                    timeoutExceptionHappenSingleLiveEvent.setValue(true);
+                } else {
+                    Log.e(TAG, t.getMessage(), t);
+                }
+            }
+        });
+    }
+
+    public void deleteAttach(String userLoginKey, int attachID) {
+        SipSupporterServiceDeleteAttach.deleteAttach(userLoginKey, attachID).enqueue(new Callback<AttachResult>() {
+            @Override
+            public void onResponse(Call<AttachResult> call, Response<AttachResult> response) {
+                if (response.code() == 200) {
+                    if (Integer.valueOf(response.body().getErrorCode()) <= -9001) {
+                        dangerousUserSingleLiveEvent.setValue(true);
+                    } else {
+                        deleteAttachResultSingleLiveEvent.setValue(response.body());
+                    }
+                } else if (response.code() == 400) {
+                    Gson gson = new GsonBuilder().create();
+                    AttachResult attachResult = new AttachResult();
+                    try {
+                        attachResult = gson.fromJson(response.errorBody().string(), AttachResult.class);
+                        if (Integer.valueOf(attachResult.getErrorCode()) <= -9001) {
+                            dangerousUserSingleLiveEvent.setValue(true);
+                        } else {
+                            errorDeleteAttachResultSingleLiveEvent.setValue(attachResult.getError());
+                        }
+
+                    } catch (IOException e) {
+                        Log.e(TAG, e.getMessage(), e);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AttachResult> call, Throwable t) {
                 if (t instanceof NoConnectivityException) {
                     noConnection.setValue(t.getMessage());
                 } else if (t instanceof SocketTimeoutException) {

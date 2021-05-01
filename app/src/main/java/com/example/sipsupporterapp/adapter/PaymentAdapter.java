@@ -65,15 +65,15 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.PaymentH
                             case 0:
                                 viewModel.getEditClickedSingleLiveEvent().setValue(paymentInfoList.get(position));
                                 powerMenu.dismiss();
-                                return;
+                                break;
                             case 1:
                                 viewModel.getDeleteClickedSingleLiveEvent().setValue(paymentInfoList.get(position));
                                 powerMenu.dismiss();
-                                return;
+                                break;
                             case 2:
                                 viewModel.getSeeDocumentsClickedSingleLiveEvent().setValue(paymentInfoList.get(position));
                                 powerMenu.dismiss();
-                                return;
+                                break;
                         }
                     }
                 });

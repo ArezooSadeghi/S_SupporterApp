@@ -21,6 +21,7 @@ import com.example.sipsupporterapp.view.activity.DepositAmountsContainerActivity
 import com.example.sipsupporterapp.view.activity.ProductsContainerActivity;
 import com.example.sipsupporterapp.view.activity.SupportHistoryContainerActivity;
 import com.example.sipsupporterapp.view.activity.WithdrawContainerActivity;
+import com.example.sipsupporterapp.view.dialog.ShowInformationCallDialogFragment;
 import com.example.sipsupporterapp.viewmodel.CustomerUsersViewModel;
 
 public class ItemClickedFragment extends Fragment {

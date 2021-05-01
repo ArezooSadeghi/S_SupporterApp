@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".view.fragment.AttachAgainDialogFragment">
+        tools:context=".view.dialog.AttachAgainDialogFragment">
 
         <TextView
             android:id="@+id/txt_message"
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:text="آیا می خواهید فایل دیگری را اضافه کنید؟"
             android:textColor="@color/black"
             android:textSize="14sp" />
@@ -34,19 +34,19 @@
                 android:id="@+id/btn_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/dark_navy_blue"
+                android:layout_marginRight="8dp"
+                android:backgroundTint="#838996"
                 android:text="خیر"
-                android:textColor="@color/white" />
+                android:textColor="@color/black" />
 
             <Button
                 android:id="@+id/btn_yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:backgroundTint="@color/dark_navy_blue"
+                android:layout_marginLeft="8dp"
+                android:backgroundTint="#838996"
                 android:text="بله"
-                android:textColor="@color/white" />
+                android:textColor="@color/black" />
 
         </LinearLayout>
 
