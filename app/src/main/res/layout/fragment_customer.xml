@@ -19,11 +19,12 @@
             android:layout_height="80dp"
             android:background="#FFEA00">
 
-            <ImageView
-                android:id="@+id/img_view_more"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginRight="8dp"
+            <ImageButton
+                android:id="@+id/img_btn_more"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="4dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_more"
                 app:layout_constraintBottom_toBottomOf="@id/ed_text_search"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -93,6 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
                 android:text="انصراف"
+                android:foreground="?attr/selectableItemBackground"
                 android:textColor="@color/black"
                 app:backgroundTint="#838996" />
 
@@ -102,6 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:text="ضبط"
+                android:foreground="?attr/selectableItemBackground"
                 android:textColor="@color/black"
                 app:backgroundTint="#838996" />
 

@@ -56,7 +56,7 @@ public class IPAddressAdapter extends RecyclerView.Adapter<IPAddressAdapter.IPAd
             @Override
             public void onClick(View v) {
                 viewModel.getDeleteIPAddressListSingleLiveEvent().setValue(serverData);
-                viewModel.getDeleteSpinnerSingleLiveEvent().setValue(serverData);
+                /*viewModel.getDeleteSpinnerSingleLiveEvent().setValue(serverData);*/
             }
         });
 

@@ -119,8 +119,19 @@ public class IPAddressListDialogFragment extends DialogFragment {
         viewModel.getDeleteIPAddressListSingleLiveEvent().observe(this, new Observer<ServerData>() {
             @Override
             public void onChanged(ServerData serverData) {
+                DeleteServerDataDialogFragment fragment = DeleteServerDataDialogFragment.newInstance("آیا می خواهید آدرس مربوطه را حذف کنید؟", serverData);
+                fragment.show(getParentFragmentManager(), DeleteServerDataDialogFragment.TAG);
+                /*viewModel.deleteServerData(serverData);
+                setupAdapter();*/
+            }
+        });
+
+        viewModel.getYesDeleteIPAddressList().observe(this, new Observer<ServerData>() {
+            @Override
+            public void onChanged(ServerData serverData) {
                 viewModel.deleteServerData(serverData);
                 setupAdapter();
+                viewModel.getYesDeleteSpinner().setValue(serverData);
             }
         });
 

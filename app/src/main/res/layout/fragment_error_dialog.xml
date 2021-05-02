@@ -16,6 +16,7 @@
         <ImageView
             android:id="@+id/img_close_window"
             android:layout_width="30dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:layout_height="30dp"
             android:layout_gravity="end"
             android:src="@drawable/ic_close" />

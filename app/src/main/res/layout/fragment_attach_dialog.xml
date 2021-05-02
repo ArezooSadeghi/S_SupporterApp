@@ -18,6 +18,7 @@
             android:layout_height="30dp"
             android:layout_marginTop="48dp"
             android:layout_marginBottom="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/more"
             app:layout_constraintStart_toStartOf="@id/card_view"
             app:layout_constraintTop_toTopOf="parent" />
@@ -49,8 +50,9 @@
             android:id="@+id/img_send"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
             android:layout_marginBottom="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/send"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -74,6 +76,7 @@
             android:id="@+id/img_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_close"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -82,6 +85,7 @@
             android:id="@+id/img_camera"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/camera"
             app:layout_constraintBottom_toBottomOf="@id/img_more"
             app:layout_constraintEnd_toEndOf="@id/card_view"
@@ -102,6 +106,7 @@
             android:id="@+id/img_rotate"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/retry"
             app:layout_constraintBottom_toBottomOf="@id/img_more"
             app:layout_constraintEnd_toStartOf="@id/img_camera"

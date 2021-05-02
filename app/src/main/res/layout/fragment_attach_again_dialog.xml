@@ -37,6 +37,7 @@
                 android:layout_marginRight="8dp"
                 android:backgroundTint="#838996"
                 android:text="خیر"
+                android:foreground="?attr/selectableItemBackground"
                 android:textColor="@color/black" />
 
             <Button
@@ -46,6 +47,7 @@
                 android:layout_marginLeft="8dp"
                 android:backgroundTint="#838996"
                 android:text="بله"
+                android:foreground="?attr/selectableItemBackground"
                 android:textColor="@color/black" />
 
         </LinearLayout>

@@ -11,4 +11,7 @@
     <color name="yellow">#FDA625</color>
     <color name="mdtp_accent_color">#FDA625</color>
     <color name="mdtp_accent_color_dark">#FDA625</color>
+    <color name="light_yellow">#FFEA00</color>
+    <color name="cream">#FFF8DC</color>
+    <color name="light_grey">#838996</color>
 </resources>

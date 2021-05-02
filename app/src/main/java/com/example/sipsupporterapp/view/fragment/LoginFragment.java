@@ -104,6 +104,7 @@ public class LoginFragment extends Fragment {
                         binding.edTextPassword.setEnabled(true);
                         binding.edTextUserName.setEnabled(true);
                         binding.btnLogin.setEnabled(true);
+                        binding.imgBtnMore.setEnabled(true);
 
                         SipSupportSharedPreferences
                                 .setUserName(getContext(), binding.edTextUserName.getText().toString());
@@ -130,6 +131,7 @@ public class LoginFragment extends Fragment {
                 binding.edTextPassword.setEnabled(true);
                 binding.edTextUserName.setEnabled(true);
                 binding.btnLogin.setEnabled(true);
+                binding.imgBtnMore.setEnabled(true);
 
                 ErrorDialogFragment fragment = ErrorDialogFragment.newInstance(error);
                 fragment.show(getParentFragmentManager(), ErrorDialogFragment.TAG);
@@ -143,6 +145,7 @@ public class LoginFragment extends Fragment {
                 binding.edTextPassword.setEnabled(true);
                 binding.edTextUserName.setEnabled(true);
                 binding.btnLogin.setEnabled(true);
+                binding.imgBtnMore.setEnabled(true);
 
                 ErrorDialogFragment fragment = ErrorDialogFragment.newInstance(error);
                 fragment.show(getParentFragmentManager(), ErrorDialogFragment.TAG);
@@ -157,6 +160,7 @@ public class LoginFragment extends Fragment {
                         binding.edTextPassword.setEnabled(true);
                         binding.edTextUserName.setEnabled(true);
                         binding.btnLogin.setEnabled(true);
+                        binding.imgBtnMore.setEnabled(true);
 
                         ErrorDialogFragment fragment = ErrorDialogFragment
                                 .newInstance("اتصال به اینترنت با خطا مواجه شد");
@@ -172,6 +176,7 @@ public class LoginFragment extends Fragment {
                         binding.edTextPassword.setEnabled(true);
                         binding.edTextUserName.setEnabled(true);
                         binding.btnLogin.setEnabled(true);
+                        binding.imgBtnMore.setEnabled(true);
 
                         ErrorDialogFragment fragment = ErrorDialogFragment.newInstance(error);
                         fragment.show(getParentFragmentManager(), ErrorDialogFragment.TAG);
@@ -202,7 +207,7 @@ public class LoginFragment extends Fragment {
                     }
                 });
 
-        viewModel.getDeleteSpinnerSingleLiveEvent()
+        /*viewModel.getDeleteSpinnerSingleLiveEvent()
                 .observe(getViewLifecycleOwner(), new Observer<ServerData>() {
                     @Override
                     public void onChanged(ServerData serverData) {
@@ -220,6 +225,24 @@ public class LoginFragment extends Fragment {
                         }
                     }
                 });
+        */
+        viewModel.getYesDeleteSpinner().observe(getViewLifecycleOwner(), new Observer<ServerData>() {
+            @Override
+            public void onChanged(ServerData serverData) {
+                if (viewModel.getServerDataList().size() == 0) {
+                    SipSupportSharedPreferences.setLastValueSpinner(getContext(), null);
+                    setupSpinner();
+                    fragment.dismiss();
+                    binding.edTextPassword.setText("");
+                    binding.edTextUserName.setText("");
+                    EnterIPAddressDialogFragment fragment = EnterIPAddressDialogFragment.newInstance();
+                    fragment.show(getChildFragmentManager(), EnterIPAddressDialogFragment.TAG);
+                } else {
+                    SipSupportSharedPreferences.setLastValueSpinner(getContext(), null);
+                    setupSpinner();
+                }
+            }
+        });
     }
 
 
@@ -262,6 +285,7 @@ public class LoginFragment extends Fragment {
                     binding.edTextPassword.setEnabled(false);
                     binding.edTextUserName.setEnabled(false);
                     binding.btnLogin.setEnabled(false);
+                    binding.imgBtnMore.setEnabled(false);
 
                     String userName = binding.edTextUserName.getText().toString();
                     String password = binding.edTextPassword.getText().toString();
@@ -279,7 +303,7 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        binding.imgMore.setOnClickListener(new View.OnClickListener() {
+        binding.imgBtnMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fragment = IPAddressListDialogFragment.newInstance();

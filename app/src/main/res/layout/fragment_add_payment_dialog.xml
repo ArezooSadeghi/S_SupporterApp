@@ -199,6 +199,7 @@
                         android:layout_marginLeft="16dp"
                         android:backgroundTint="#838996"
                         android:text="ضبط"
+                        android:foreground="?attr/selectableItemBackground"
                         android:textColor="@color/black" />
 
                     <Button
@@ -208,6 +209,7 @@
                         android:layout_marginRight="16dp"
                         android:backgroundTint="#838996"
                         android:text="انصراف"
+                        android:foreground="?attr/selectableItemBackground"
                         android:textColor="@color/black" />
 
                 </LinearLayout>

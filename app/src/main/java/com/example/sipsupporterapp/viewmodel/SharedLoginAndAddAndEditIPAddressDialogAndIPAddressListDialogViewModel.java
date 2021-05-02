@@ -28,6 +28,9 @@ public class SharedLoginAndAddAndEditIPAddressDialogAndIPAddressListDialogViewMo
     private SingleLiveEvent<Boolean> dangerousUserSingleLiveEvent;
     private SingleLiveEvent<Boolean> timeoutExceptionHappenSingleLiveEvent;
 
+    private SingleLiveEvent<ServerData> yesDeleteSpinner = new SingleLiveEvent<>();
+    private SingleLiveEvent<ServerData> yesDeleteIPAddressList = new SingleLiveEvent<>();
+
     public SharedLoginAndAddAndEditIPAddressDialogAndIPAddressListDialogViewModel(@NonNull Application application) {
         super(application);
         repository = SipSupportRepository.getInstance(getApplication());
@@ -85,6 +88,14 @@ public class SharedLoginAndAddAndEditIPAddressDialogAndIPAddressListDialogViewMo
 
     public SingleLiveEvent<String> getNoConnection() {
         return noConnection;
+    }
+
+    public SingleLiveEvent<ServerData> getYesDeleteSpinner() {
+        return yesDeleteSpinner;
+    }
+
+    public SingleLiveEvent<ServerData> getYesDeleteIPAddressList() {
+        return yesDeleteIPAddressList;
     }
 
     public void fetchUserResult(UserLoginParameter userLoginParameter) {

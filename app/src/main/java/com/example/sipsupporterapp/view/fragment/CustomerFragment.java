@@ -205,7 +205,7 @@ public class CustomerFragment extends Fragment {
 
 
     private void handleEvents() {
-        binding.imgViewMore.setOnClickListener(new View.OnClickListener() {
+        binding.imgBtnMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 PopupDialogFragment fragment = PopupDialogFragment.newInstance();

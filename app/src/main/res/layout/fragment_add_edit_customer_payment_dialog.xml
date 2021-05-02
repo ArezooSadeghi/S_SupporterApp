@@ -142,6 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
                 android:backgroundTint="#838996"
+                android:foreground="?attr/selectableItemBackground"
                 android:text="انصراف"
                 android:textColor="@color/black" />
 
@@ -151,6 +152,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:backgroundTint="#838996"
+                android:foreground="?attr/selectableItemBackground"
                 android:text="ضبط"
                 android:textColor="@color/black" />
 

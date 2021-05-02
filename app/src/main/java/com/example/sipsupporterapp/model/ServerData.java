@@ -1,6 +1,8 @@
 package com.example.sipsupporterapp.model;
 
-public class ServerData {
+import java.io.Serializable;
+
+public class ServerData implements Serializable {
 
     private int primaryKey;
     private String centerName;
